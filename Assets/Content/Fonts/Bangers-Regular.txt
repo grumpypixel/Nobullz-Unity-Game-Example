@@ -1,0 +1,9 @@
+Source: https://fonts.google.com/specimen/Bangers
+
+Designer: Vernon Adams
+http://sansoxygen.com/
+https://github.com/vernnobile
+
+License: Open Font License
+
+https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web
