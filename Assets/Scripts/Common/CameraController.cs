@@ -5,22 +5,22 @@ namespace game
 	[RequireComponent(typeof(Camera))]
 	public class CameraController : MonoBehaviour
 	{
-		private Transform 	m_transform;
-		private Camera		m_camera;
+		private Transform m_transform;
+		private Camera	  m_camera;
 
 		public Bounds bounds
 		{
 			get; private set;
 		}
 
-		public Camera mainCamera
-		{
-			get { return m_camera; }
-		}
-
 		public Vector3 position
 		{
 			get { return m_transform.position; }
+		}
+
+		public Color backgroundColor
+		{
+			set { m_camera.backgroundColor = value; }
 		}
 
 		public float width
@@ -57,6 +57,11 @@ namespace game
 		{
 			get { return m_camera.orthographicSize; }
 			set { m_camera.orthographicSize = value; }
+		}
+
+		public Camera GetCamera()
+		{
+			return m_camera;
 		}
 
 		void Awake()
