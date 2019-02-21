@@ -67,13 +67,6 @@ namespace game
 				}
 #endif
 			}
-
-#if UNITY_ANDROID
-			if (Input.GetKeyDown(KeyCode.Escape))
-			{
-				GameContext.messageDispatcher.AddMessage<EscapeMessage>();
-			}
-#endif
 		}
 
 		private void SendTouchBeganMessage(Vector2 position, int fingerId)

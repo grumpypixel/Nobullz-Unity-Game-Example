@@ -12,20 +12,19 @@ namespace game
 			None
 		}
 
+		private static LogDelegate s_m_logDelegate = null;
+		private static Level       s_m_logLevel = Level.Info;
+
 		public delegate void LogDelegate(Level level, string format, params object[] args);
 
 		public static void SetLogDelegate(LogDelegate logDelegate)
 		{
-#if UNITY_DEBUG
 			s_m_logDelegate = logDelegate;
-#endif
 		}
 
 		public static void SetLogLevel(Level level)
 		{
-#if UNITY_DEBUG
 			s_m_logLevel = level;
-#endif
 		}
 
 		public static Level GetLogLevel()
@@ -33,14 +32,9 @@ namespace game
 			return s_m_logLevel;
 		}
 
-#if UNITY_DEBUG
-		private static LogDelegate  s_m_logDelegate = null;
-#endif
-		private static Level        s_m_logLevel = Level.Info;
-
 		public static void Info(string format, params object[] args)
 		{
-#if UNITY_DEBUG
+		#if UNITY_DEBUG
 			if (s_m_logLevel > Level.Info)
 			{
 				return;
@@ -62,12 +56,12 @@ namespace game
 			{
 				Debug.Log(string.Format(format, args));
 			}
-#endif
+		#endif
 		}
 
 		public static void Warning(string format, params object[] args)
 		{
-#if UNITY_DEBUG
+		#if UNITY_DEBUG
 			if (s_m_logLevel > Level.Warning)
 			{
 				return;
@@ -89,12 +83,12 @@ namespace game
 			{
 				Debug.LogWarning(string.Format(format, args));
 			}
-#endif
+		#endif
 		}
 
 		public static void Error(string format, params object[] args)
 		{
-#if UNITY_DEBUG
+		#if UNITY_DEBUG
 			if (s_m_logLevel > Level.Error)
 			{
 				return;
@@ -116,7 +110,7 @@ namespace game
 			{
 				Debug.LogError(string.Format(format, args));
 			}
-#endif
+		#endif
 		}
 	}
 }

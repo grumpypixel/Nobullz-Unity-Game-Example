@@ -104,10 +104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f536b6b3c9ed7446d8237f7fb11cd980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runInBackground: 1
   showDebugInfo: 1
   guiDepth: 0
-  debugInfoColor: {r: 1, g: 0, b: 1, a: 1}
+  debugInfoColor: {r: 1, g: 1, b: 1, a: 1}
   debugInfoRectBottomOffset: 0
 --- !u!114 &6130554643791187842
 MonoBehaviour:

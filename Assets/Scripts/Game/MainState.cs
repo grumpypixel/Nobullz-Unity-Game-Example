@@ -4,18 +4,26 @@ using UnityEngine.SceneManagement;
 
 namespace game
 {
-	public class MainState : MonoBehaviour
-	{
-		public string targetScene;
+    public class MainState : MonoBehaviour
+    {
+        public bool   runAppInBackground = true;
+        public int    appTargetFrameRate = -1;
+        public string targetScene;
 
-		IEnumerator Start()
-		{
-			yield return new WaitForEndOfFrame();
+        void Awake()
+        {
+            Application.runInBackground = this.runAppInBackground;
+            Application.targetFrameRate = this.appTargetFrameRate;
+        }
 
-			if (string.IsNullOrEmpty(this.targetScene) == false)
-			{
-				SceneManager.LoadScene(this.targetScene);
-			}
-		}
-	}
+        IEnumerator Start()
+        {
+            yield return new WaitForEndOfFrame();
+
+            if (string.IsNullOrEmpty(this.targetScene) == false)
+            {
+                SceneManager.LoadScene(this.targetScene);
+            }
+        }
+    }
 }

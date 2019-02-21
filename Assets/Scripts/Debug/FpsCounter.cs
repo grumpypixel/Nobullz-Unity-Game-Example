@@ -18,9 +18,9 @@ namespace game
 		void Awake()
 		{
 			Reset();
-#if !UNITY_DEBUG
+		#if !UNITY_DEBUG
 			this.enabled = false;
-#endif
+		#endif
 		}
 
 		void Update()

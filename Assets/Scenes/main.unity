@@ -223,6 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51cff7d3328b14020b9d5515d5885f91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runAppInBackground: 1
+  appTargetFrameRate: -1
   targetScene: menu
 --- !u!4 &609081396
 Transform:
@@ -314,6 +316,21 @@ PrefabInstance:
         type: 3}
       propertyPath: fadeOutTime
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 233012761714722326, guid: 47553a373d5e04067a78b802ce60c7f2,
+        type: 3}
+      propertyPath: debugInfoColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 233012761714722326, guid: 47553a373d5e04067a78b802ce60c7f2,
+        type: 3}
+      propertyPath: debugInfoColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 233012761714722326, guid: 47553a373d5e04067a78b802ce60c7f2,
+        type: 3}
+      propertyPath: debugInfoColor.b
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47553a373d5e04067a78b802ce60c7f2, type: 3}

@@ -22,13 +22,13 @@ namespace game
 			set { m_caption = value; }
 		}
 
-#if UNITY_DEBUG
+	#if UNITY_DEBUG
 		void OnGUI()
 		{
 			HandleScreenRect(ref m_windowRect);
 			GUI.Window(m_windowId, m_windowRect, DrawWindow, m_caption);
 		}
-#endif
+	#endif
 
 		private void DrawWindow(int id)
 		{

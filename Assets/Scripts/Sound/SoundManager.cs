@@ -160,9 +160,9 @@ namespace game
 			for (int i = 0; i < m_numAudioSources; ++i)
 			{
 				SoundHandle handle = CreateHandle();
-#if UNITY_EDITOR
+		#if UNITY_EDITOR
 				handle.entity.SetActive(false);
-#endif
+		#endif
 				m_handles.Add(handle);
 			}
 		}
@@ -184,17 +184,17 @@ namespace game
 			{
 				if (m_handles[ i ].isFree)
 				{
-#if UNITY_EDITOR
+		#if UNITY_EDITOR
 					m_handles[ i ].entity.SetActive(true);
-#endif
+		#endif
 					return m_handles[ i ];
 				}
 			}
 			SoundHandle newHandle = CreateHandle();
 			m_handles.Add(newHandle);
-#if UNITY_EDITOR
+		#if UNITY_EDITOR
 			Log.Warning("Created new sound handle {0}", m_handles.Count);
-#endif
+		#endif
 			return newHandle;
 		}
 

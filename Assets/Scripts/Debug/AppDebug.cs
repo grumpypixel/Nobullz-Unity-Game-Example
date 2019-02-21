@@ -4,11 +4,10 @@ namespace game
 {
 	public class AppDebug : MonoBehaviour
 	{
-		public bool					runInBackground = true;
 		public bool					showDebugInfo = true;
 		public int					guiDepth = 0;
 
-#if UNITY_DEBUG
+	#if UNITY_DEBUG
 		public Color				debugInfoColor = Color.magenta;
 		public float				debugInfoRectBottomOffset;
 
@@ -17,39 +16,26 @@ namespace game
 		private ErrorWindow			m_errorWindow;
 		private GUIContent			m_debugInfoContent;
 		private GUIStyle			m_debugInfoStyle;
-		private Rect				m_debugInfoRect;
-#endif
+	#endif
 
 		void Awake()
 		{
 			Application.logMessageReceivedThreaded += HandleUnityLog;
-			Application.runInBackground = this.runInBackground;
-			Application.targetFrameRate = -1;
 
-#if UNITY_DEBUG
+		#if UNITY_DEBUG
 			Log.SetLogDelegate(DebugLogDelegate);
 			Debugger.SetBreakDelegate(DebugBreakDelegate);
 
 			m_debugConsole = GetComponent<DebugConsole>();
 			m_errorWindow = GetComponent<ErrorWindow>();
 			m_fpsCounter = GetComponent<FpsCounter>();
-#endif
 
-#if UNITY_DEBUG
 			m_debugInfoStyle = new GUIStyle();
-			m_debugInfoStyle.normal.textColor = this.debugInfoColor;
 			m_debugInfoContent = new GUIContent(string.Empty);
-			Vector2 size = m_debugInfoStyle.CalcSize(m_debugInfoContent);
-
-#   if UNITY_EDITOR
-			m_debugInfoRect = new Rect(0, Screen.height - size.y, Screen.width, size.y);
-#   else
-			m_debugInfoRect = new Rect(0, Screen.height - size.y - this.debugInfoRectBottomOffset, Screen.width, size.y);
-#   endif
-#endif
+		#endif
 		}
 
-#if UNITY_DEBUG
+	#if UNITY_DEBUG
 		void OnGUI()
 		{
 			if (m_errorWindow.enabled)
@@ -61,45 +47,50 @@ namespace game
 			{
 				long memory = System.GC.GetTotalMemory(false) >> 10;
 				m_debugInfoContent.text = string.Format("Fps: {0:f0} Frame: {1} Mem: {2}kb", m_fpsCounter.fps, Time.frameCount, memory);
+
 				GUI.depth = this.guiDepth;
-				GUI.Label(m_debugInfoRect, m_debugInfoContent, m_debugInfoStyle);
+				m_debugInfoStyle.normal.textColor = this.debugInfoColor;
+
+				Vector2 size = m_debugInfoStyle.CalcSize(m_debugInfoContent);
+				Rect rect = new Rect(0, Screen.height - size.y - this.debugInfoRectBottomOffset, Screen.width, size.y);
+				GUI.Label(rect, m_debugInfoContent, m_debugInfoStyle);
 			}
 		}
-#endif
+	#endif
 
 		void OnApplicationQuit()
 		{
-#if UNITY_STANDALONE
+		#if UNITY_STANDALONE
 			if (Screen.fullScreen)
 			{
 				Screen.fullScreen = false;
 			}
-#endif
+		#endif
 
-#if UNITY_DEBUG
+		#if UNITY_DEBUG
 			Application.logMessageReceivedThreaded -= HandleUnityLog;
 			Log.SetLogDelegate(null);
 			Debugger.SetBreakDelegate(null);
-#endif
+		#endif
 
-#if UNITY_EDITOR
+		#if UNITY_EDITOR
 			UnityEditor.EditorApplication.isPlaying = false;
-#endif
+		#endif
 		}
 
 		private void DebugBreakDelegate(string format, params object[] args)
 		{
-#if UNITY_DEBUG
+		#if UNITY_DEBUG
 			string errorMessage = string.Format(format, args);
 			SetError(errorMessage);
 			Log.Error(errorMessage);
 			throw new System.ApplicationException(errorMessage);
-#endif
+		#endif
 		}
 
 		private void DebugLogDelegate(Log.Level logLevel, string format, params object[] args)
 		{
-#if UNITY_DEBUG
+		#if UNITY_DEBUG
 			string output = FormatOutputString(format, args);
 
 			switch (logLevel)
@@ -116,13 +107,13 @@ namespace game
 				default:
 					break;
 			}
-#endif
+		#endif
 		}
 
 		private string FormatOutputString(string format, params object[] args)
 		{
 			string output = string.Empty;
-#if UNITY_DEBUG
+		#if UNITY_DEBUG
 			try
 			{
 				output = string.Format(format, args);
@@ -135,13 +126,13 @@ namespace game
 			{
 				output = "Could not format trace string <FormatException>!";
 			}
-#endif
+		#endif
 			return output;
 		}
 
 		private void HandleUnityLog(string message, string stackTrace, LogType logType)
 		{
-#if UNITY_DEBUG
+		#if UNITY_DEBUG
 			if (logType == LogType.Error || logType == LogType.Exception)
 			{
 				SetError(string.Concat(message, "\n", stackTrace));
@@ -152,15 +143,15 @@ namespace game
 				Color color = logType == LogType.Log ? Color.white : Color.yellow;
 				m_debugConsole.Log(message, color);
 			}
-#endif
+		#endif
 		}
 
 		private void SetError(string errorMessage)
 		{
-#if UNITY_DEBUG
+		#if UNITY_DEBUG
 			m_errorWindow.errorText = errorMessage;
 			m_errorWindow.enabled = true;
-#endif
+		#endif
 		}
 	}
 }

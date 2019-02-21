@@ -8,17 +8,17 @@ namespace game
 
 		public static void SetBreakDelegate(BreakDelegate breakDelegate)
 		{
-#if UNITY_DEBUG
+		#if UNITY_DEBUG
 			s_m_breakDelegate = breakDelegate;
-#endif
+		#endif
 		}
 
-#if UNITY_DEBUG
+	#if UNITY_DEBUG
 		private static BreakDelegate s_m_breakDelegate = null;
-#endif
+	#endif
 		public static void Assert(bool condition)
 		{
-#if UNITY_DEBUG
+		#if UNITY_DEBUG
 			if (!condition)
 			{
 				if (s_m_breakDelegate != null)
@@ -30,12 +30,12 @@ namespace game
 					Debug.LogError("ASSERT");
 				}
 			}
-#endif
+		#endif
 		}
 
 		public static void Assert(bool condition, string format, params object[] args)
 		{
-#if UNITY_DEBUG
+		#if UNITY_DEBUG
 			if (!condition)
 			{
 				if (s_m_breakDelegate != null)
@@ -47,12 +47,12 @@ namespace game
 					Debug.LogError(string.Format(format, args));
 				}
 			}
-#endif
+		#endif
 		}
 
 		public static void Enter(string format, params object[] args)
 		{
-#if UNITY_DEBUG
+		#if UNITY_DEBUG
 			if (s_m_breakDelegate != null)
 			{
 				s_m_breakDelegate(format, args);
@@ -61,7 +61,7 @@ namespace game
 			{
 				Debug.Break();
 			}
-#endif
+		#endif
 		}
 	}
 }

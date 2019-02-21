@@ -4,8 +4,8 @@ namespace game
 {
 	public class CoreLoader : MonoBehaviour
 	{
-		public GameObject 	corePrefab;
-		public string		coreTag;
+		public GameObject corePrefab;
+		public string	  coreTag;
 
 #if UNITY_EDITOR
 		void Awake()
