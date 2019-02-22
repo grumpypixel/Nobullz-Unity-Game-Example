@@ -3,20 +3,29 @@ using UnityEngine.SceneManagement;
 
 namespace game
 {
+	public class LoadSceneMessage : Message
+	{
+		public string scene;
+
+		public override void Reset()
+		{
+			scene = string.Empty;
+		}
+	}
+
 	public class SceneLoader : MonoBehaviour
 	{
-		public string			targetSceneName = "";
+		public Color          fadeInColor = Color.black;
+		public Color          fadeOutColor = Color.black;
 
-		public Color			fadeInColor = Color.black;
-		public Color			fadeOutColor = Color.black;
+		public float          fadeInTime = 0.5f;
+		public float          fadeOutTime = 0.5f;
 
-		public float			fadeInTime = 0.5f;
-		public float			fadeOutTime = 0.5f;
+		public bool           autoFadeIn = true;
 
-		public bool				autoFadeIn = true;
-
-		private UIScreenFader	m_screenFader;
-		private bool			m_loading = false;
+		private UIScreenFader m_screenFader;
+		private string        m_targetSceneName = "";
+		private bool          m_loading = false;
 
 		public bool isLoading
 		{
@@ -25,13 +34,7 @@ namespace game
 
 		public void Load(string sceneName)
 		{
-			this.targetSceneName = sceneName;
-			FadeOut(this.targetSceneName);
-		}
-
-		public void Load()
-		{
-			FadeOut(this.targetSceneName);
+			FadeOut(sceneName);
 		}
 
 		void Awake()
@@ -41,10 +44,7 @@ namespace game
 
 		void Start()
 		{
-			if (string.IsNullOrEmpty(this.targetSceneName) == false)
-			{
-				Load();
-			}
+			RegisterMessages();
 		}
 
 		void OnEnable()
@@ -54,6 +54,7 @@ namespace game
 
 		void OnDisable()
 		{
+			DeregisterMessages();
 			SceneManager.sceneLoaded -= OnSceneLoaded;
 		}
 
@@ -78,7 +79,7 @@ namespace game
 
 		public void FadeOut(string targetSceneName)
 		{
-			this.targetSceneName = targetSceneName;
+			m_targetSceneName = targetSceneName;
 
 			if (m_screenFader != null)
 			{
@@ -101,10 +102,28 @@ namespace game
 
 		private void LoadGameScene()
 		{
-			if (string.IsNullOrEmpty(this.targetSceneName) == false)
+			if (string.IsNullOrEmpty(m_targetSceneName) == false)
 			{
-				SceneManager.LoadScene(this.targetSceneName);
+				SceneManager.LoadScene(m_targetSceneName);
 			}
+		}
+
+		private void RegisterMessages()
+		{
+			MessageCenter center = GameContext.messageCenter;
+			center.AddListener<LoadSceneMessage>(HandleLoadSceneMessage);
+		}
+
+		private void DeregisterMessages()
+		{
+			MessageCenter center = GameContext.messageCenter;
+			center.RemoveListener<LoadSceneMessage>(HandleLoadSceneMessage);
+		}
+
+		private void HandleLoadSceneMessage(IMessageProvider provider)
+		{
+			LoadSceneMessage message = provider.GetMessage<LoadSceneMessage>();
+			Load(message.scene);
 		}
 	}
 }

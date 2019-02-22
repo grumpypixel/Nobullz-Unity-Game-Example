@@ -2,16 +2,6 @@
 
 namespace game
 {
-	public class LoadSceneMessage : Message
-	{
-		public SceneType scene;
-
-		public override void Reset()
-		{
-			scene = SceneType.None;
-		}
-	}
-
 	public class ScoreMessage : Message
 	{
 		public int score;
