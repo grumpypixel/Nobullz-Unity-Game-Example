@@ -27,7 +27,7 @@ namespace game
 
 		private AudioClip GetClipAndVolume(SoundBank bank, out float volume)
 		{
-			volume = bank.m_volume;
+			volume = bank.volume;
 			return bank.GetNext();
 		}
 	}

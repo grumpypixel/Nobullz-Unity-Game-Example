@@ -28,14 +28,12 @@ namespace game
 		{
 			MessageCenter center = GameContext.messageCenter;
 			center.AddListener<LoadSceneMessage>(HandleLoadSceneMessage);
-			center.AddListener<PlaySoundMessage>(HandlePlaySoundMessage);
 		}
 
 		private void DeregisterMessages()
 		{
 			MessageCenter center = GameContext.messageCenter;
 			center.RemoveListener<LoadSceneMessage>(HandleLoadSceneMessage);
-			center.RemoveListener<PlaySoundMessage>(HandlePlaySoundMessage);
 		}
 
 		private void HandleLoadSceneMessage(IMessageProvider provider)
@@ -46,12 +44,6 @@ namespace game
 				string sceneName = GameHelper.GetSceneName(message.scene);
 				m_sceneLoader.Load(sceneName);
 			}
-		}
-
-		private void HandlePlaySoundMessage(IMessageProvider provider)
-		{
-			PlaySoundMessage message = provider.GetMessage<PlaySoundMessage>();
-			GameContext.sfxPlayer.Play((int)message.sfxId);
 		}
 
 		public void OnPlayButtonPressed()

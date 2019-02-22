@@ -12,16 +12,6 @@ namespace game
 		}
 	}
 
-	public class PlaySoundMessage : Message
-	{
-		public SfxId sfxId;
-
-		public override void Reset()
-		{
-			sfxId = SfxId.None;
-		}
-	}
-
 	public class ScoreMessage : Message
 	{
 		public int score;

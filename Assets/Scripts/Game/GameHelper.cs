@@ -16,7 +16,7 @@ namespace game
 
 		public static void PlaySound(SfxId sfxId)
 		{
-			PlaySoundMessage soundMessage = GameContext.messageDispatcher.AddMessage<PlaySoundMessage>();
+			SoundMessage soundMessage = GameContext.messageDispatcher.AddMessage<SoundMessage>();
 			soundMessage.sfxId = sfxId;
 		}
 	}
