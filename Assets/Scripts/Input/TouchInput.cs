@@ -170,6 +170,10 @@ namespace game
 		private bool IsPointerOverGameObject(int fingerId)
 		{
 			EventSystem eventSystem = EventSystem.current;
+			if (eventSystem == null)
+			{
+				return false;
+			}
 		#if UNITY_EDITOR
 			return (eventSystem.IsPointerOverGameObject() && eventSystem.currentSelectedGameObject != null);
 		#else
