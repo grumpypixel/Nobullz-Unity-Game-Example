@@ -155,7 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6345530fc931b47dc9c74d2079bcbd5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: 
   fadeInColor: {r: 1, g: 1, b: 1, a: 1}
   fadeOutColor: {r: 1, g: 1, b: 1, a: 1}
   fadeInTime: 0.3
@@ -716,7 +715,7 @@ GameObject:
   - component: {fileID: 940643838}
   - component: {fileID: 940643837}
   m_Layer: 5
-  m_Name: Background Image
+  m_Name: Fade Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
