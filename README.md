@@ -8,7 +8,7 @@ This example consists of three scenes: a main scene, which acts as the entry poi
 
 ## Dependencies
 
-- [Unity](https://unity3d.com/get-unity/download)
+- [Unity](https://unity3d.com/get-unity/download) version 2018.3.6f1 or higher
 
 ## Usage
 
