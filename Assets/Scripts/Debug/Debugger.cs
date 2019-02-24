@@ -6,16 +6,13 @@ namespace game
 	{
 		public delegate void BreakDelegate(string format, params object[] args);
 
+		private static BreakDelegate s_m_breakDelegate = null;
+
 		public static void SetBreakDelegate(BreakDelegate breakDelegate)
 		{
-		#if UNITY_DEBUG
 			s_m_breakDelegate = breakDelegate;
-		#endif
 		}
 
-	#if UNITY_DEBUG
-		private static BreakDelegate s_m_breakDelegate = null;
-	#endif
 		public static void Assert(bool condition)
 		{
 		#if UNITY_DEBUG
