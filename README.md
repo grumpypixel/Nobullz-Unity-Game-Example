@@ -24,8 +24,8 @@ This example uses the following third party assets.
 Sounds:
 - [Blop](http://soundbible.com/2067-Blop.html) recorded by Mark DiAngelo
 - [Pin Drop](http://soundbible.com/1073-Pin-Drop.html) recorded by Mike Koenig
-- [Tiny Button Push](http://soundbible.com/419-Tiny-Button-Push.html) recorded by Mike Koenig
 - [Pop](https://freesound.org/s/67086/) recored by SunnySideSound
+- [Tiny Button Push](http://soundbible.com/419-Tiny-Button-Push.html) recorded by Mike Koenig
 
 Font:
 - [Bangers](https://fonts.google.com/specimen/Bangers) by [Vernon Adams](https://github.com/vernnobile)
