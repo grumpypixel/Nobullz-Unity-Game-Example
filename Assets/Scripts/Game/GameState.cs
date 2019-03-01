@@ -46,6 +46,7 @@ namespace game
 			{
 				Vector3 position = UnityHelper.ConvertScreenToWorldPoint(message.touchPosition, Camera.main);
 				GameContext.ballFactory.CreateBall(position);
+				GameHelper.PlaySound(SfxId.Touch);
 			}
 		}
 	}

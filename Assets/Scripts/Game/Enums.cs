@@ -24,7 +24,8 @@
 		None,
 		PlayButton,
 		HomeButton,
-		Ball
+		Ball,
+		Touch
 	}
 
 	public enum SceneType

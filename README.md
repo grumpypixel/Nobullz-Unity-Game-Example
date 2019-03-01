@@ -24,13 +24,14 @@ This example uses the following third party assets.
 Sounds:
 - [Blop](http://soundbible.com/2067-Blop.html) recorded by Mark DiAngelo
 - [Pin Drop](http://soundbible.com/1073-Pin-Drop.html) recorded by Mike Koenig
-- [Tiny Buton Push](http://soundbible.com/419-Tiny-Button-Push.html) recorded by Mike Koenig
+- [Tiny Button Push](http://soundbible.com/419-Tiny-Button-Push.html) recorded by Mike Koenig
+- [Pop](https://freesound.org/s/67086/) recored by SunnySideSound
 
 Font:
 - [Bangers](https://fonts.google.com/specimen/Bangers) by [Vernon Adams](https://github.com/vernnobile)
 
-All three sounds have been published under the [Attribution 3.0 license](https://creativecommons.org/licenses/by/3.0/).
-The Bangers font has been published under the [Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web).
+All sounds have been published under the [Attribution 3.0 license](https://creativecommons.org/licenses/by/3.0/).
+The font has been published under the [Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL_web).
 
 ## Tested on the following operating systems
 

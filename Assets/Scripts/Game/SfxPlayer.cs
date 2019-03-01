@@ -7,6 +7,7 @@ namespace game
 		public SoundBank playButton;
 		public SoundBank homeButton;
 		public SoundBank ball;
+		public SoundBank touch;
 
 		public override AudioClip GetClip(int effectId, out float volume)
 		{
@@ -18,6 +19,8 @@ namespace game
 					return GetClipAndVolume(this.homeButton, out volume);
 				case SfxId.Ball:
 					return GetClipAndVolume(this.ball, out volume);
+				case SfxId.Touch:
+					return GetClipAndVolume(this.touch, out volume);
 				default:
 					break;
 			}
